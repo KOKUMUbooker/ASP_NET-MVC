@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "j.DataPassingTempDataCookies/1.0.0": {
+        "runtime": {
+          "j.DataPassingTempDataCookies.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "j.DataPassingTempDataCookies/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
