@@ -1,24 +1,28 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using j.DataPassingViewBag.Models;
 
 namespace j.DataPassingViewBag.Controllers;
 
 public class HomeController : Controller
-{
-    public IActionResult Index()
     {
-        return View();
-    }
+        public ViewResult Index()
+        {
+            //String string Data
+            ViewBag.Title = "Student Details Page";
+            ViewBag.Header = "Student Details";
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+            Student student = new Student()
+            {
+                StudentId = 101,
+                Name = "James",
+                Branch = "CSE",
+                Section = "A",
+                Gender = "Male"
+            };
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+            //storing Student Data
+            ViewBag.Student = student;
+
+            return View();
+        }
 }

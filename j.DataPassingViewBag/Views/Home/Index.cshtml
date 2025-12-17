@@ -1,8 +1,32 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = null;
+    var student = ViewBag.Student;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h1>@ViewBag.Header</h1>
+
+    <div>
+        StudentId : @student?.StudentId
+    </div>
+    <div>
+        Name : @student?.Name
+    </div>
+    <div>
+        Branch : @student?.Branch
+    </div>
+    <div>
+        Section : @student?.Section
+    </div>
+    <div>
+        Gender : @student?.Gender
+    </div>
+</body>
+</html>
