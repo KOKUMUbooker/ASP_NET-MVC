@@ -65,7 +65,8 @@ public class HomeController : Controller
         return "StartPage() Action Method of HomeController";
     }
 
-    public IActionResult Privacy() // Still uses convention based routing 
+    [Route("Privacy")]
+    public IActionResult Privacy()  
     {
         return View();
     }
@@ -77,7 +78,7 @@ public class HomeController : Controller
     }
 
     [HttpGet("~/About")] // Makes route not prepend the controller name - Achieved by either "/About" or "~/About"
-    public string About(int id) // Resolves for the path http://localhost:5276/About
+    public string About() // Resolves for the path http://localhost:5276/About
     {
         return "About() Action Method of HomeController";
     }
