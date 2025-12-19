@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Please Download the File</h2>
+<br/>
+
+<!-- Form to trigger the download action -->
+<form id="downloadForm" method="get" action="/DownloadFileResult">
+    <button type="submit">Download File (via FileResult)</button>
+</form>
+<br/>
+
+<form id="downloadForm2" method="get" action="/DownloadFileStreamResult">
+    <button type="submit">Download File (via FileStreamResult)</button>
+</form>
+<br/>
+
+<form id="downloadForm3" method="get" action="/DownloadVirtualFileResult">
+    <button type="submit">Download File (via VirtualFileResult)</button>
+</form>
+<br/>
+
+<form id="downloadForm4" method="get" action="/DownloadPhysicalFileResult">
+    <button type="submit">Download File (via PhysicalFileResult)</button>
+</form>
+<br/>
