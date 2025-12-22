@@ -1,3 +1,4 @@
+using n.DataAnnotationAttributes.ValidationAttributes;
 using n.DataAnnotationAttributes.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
@@ -10,24 +11,28 @@ public class EmployeeViewModel
     [Required(ErrorMessage = "First Name is required")]
     [Display(Name = "First Name")]
     [StringLength(30, MinimumLength = 2, ErrorMessage = "First name should be between 2 and 30 characters")]
-    public string? FirstName { get; set; }
+    public string FirstName { get; set; }
 
     [Required(ErrorMessage = "Last Name is required")]
     [StringLength(30, ErrorMessage = "Last name cannot exceed 30 characters")]
     [Display(Name = "Last Name")]
-    public string? LastName { get; set; }
+    public string LastName { get; set; }
 
     [Required(ErrorMessage = "Email is required")]
     [EmailAddress(ErrorMessage = "Invalid Email Address")]
-    public string? Email { get; set; }
+    public string Email { get; set; }
 
     [Required(ErrorMessage = "Date of Birth is required")]
     [DataType(DataType.Date)]
     [Display(Name = "Date Of Birth")]
+    //Applying Custom AgeRange Validation Attribute
+    [AgeRange(18, 60, ErrorMessage = "Employee must be between 18 and 60 years old.")]
     public DateTime? DateOfBirth { get; set; }
 
     [Required(ErrorMessage = "Joining Date is required")]
     [DataType(DataType.Date)]
+    //Applying Custom DateNotInFuture Validation Attribute
+    [DateNotInFuture(ErrorMessage = "Joining date cannot be in the future.")]
     [Display(Name = "Joining Date")]
     public DateTime? JoiningDate { get; set; }
 
@@ -37,20 +42,20 @@ public class EmployeeViewModel
     // Address Information
     [Required(ErrorMessage = "Street is required")]
     [StringLength(100, ErrorMessage = "Street cannot exceed 100 characters")]
-    public string? Street { get; set; }
+    public string Street { get; set; }
 
     [Required(ErrorMessage = "City is required")]
     [StringLength(50, ErrorMessage = "City cannot exceed 50 characters")]
-    public string? City { get; set; }
+    public string City { get; set; }
 
     [Required(ErrorMessage = "State is required")]
     [StringLength(50, ErrorMessage = "State cannot exceed 50 characters")]
-    public string? State { get; set; }
+    public string State { get; set; }
 
     [Required(ErrorMessage = "Postal Code is required")]
     [RegularExpression(@"^\d{5}(-\d{4})?$|^\d{6}$", ErrorMessage = "Invalid Postal Code")]
     [Display(Name = "Postal or Zip Code")]
-    public string? PostalCode { get; set; }
+    public string PostalCode { get; set; }
 
     // Job Details
     [Required(ErrorMessage = "Job Title is required")]
@@ -67,19 +72,19 @@ public class EmployeeViewModel
 
     // Skills
     [Display(Name = "Skills")]
-    public List<int> SkillSetIds { get; set; } = new List<int>();
+    public List<int> SkillSetIds { get; set; }
 
     // Account Information
     [Required(ErrorMessage = "Password is required")]
     [DataType(DataType.Password)]
     [StringLength(100, MinimumLength = 6, ErrorMessage = "Password should be at least 6 characters")]
-    public string? Password { get; set; }
+    public string Password { get; set; }
 
     [Required(ErrorMessage = "Confirm Password is required")]
     [DataType(DataType.Password)]
     [Compare("Password", ErrorMessage = "Passwords do not match")]
     [Display(Name = "Confirm Password")]
-    public string? ConfirmPassword { get; set; }
+    public string ConfirmPassword { get; set; }
 
     // Lists for Dropdowns and Radio Buttons
     public IEnumerable<SelectListItem>? Departments { get; set; }
