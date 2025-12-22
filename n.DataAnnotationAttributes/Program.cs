@@ -1,4 +1,5 @@
 using n.DataAnnotationAttributes.Data;
+using n.DataAnnotationAttributes.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace n.DataAnnotationAttributes;
@@ -11,6 +12,9 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+
+        // Add service for generating email suggestions based on what is in the DB 
+        builder.Services.AddScoped<GenerateEmailSuggestions>();
 
         // Register ApplicationDbContext with SQL Server provider
         builder.Services.AddDbContext<ApplicationDbContext>(options =>

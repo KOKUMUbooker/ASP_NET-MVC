@@ -2,6 +2,7 @@ using n.DataAnnotationAttributes.ValidationAttributes;
 using n.DataAnnotationAttributes.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace n.DataAnnotationAttributes.ViewModels;
 
@@ -20,6 +21,8 @@ public class EmployeeViewModel
 
     [Required(ErrorMessage = "Email is required")]
     [EmailAddress(ErrorMessage = "Invalid Email Address")]
+    [Remote(action: "IsEmailAvailable", controller: "RemoteValidation", ErrorMessage = "Email is already in use. Please use a different email address.")]
+    [UniqueEmail]
     public string Email { get; set; }
 
     [Required(ErrorMessage = "Date of Birth is required")]

@@ -10,11 +10,12 @@ namespace n.DataAnnotationAttributes.Controllers;
 public class EmployeeController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly GenerateEmailSuggestions _generateSuggestions;
 
-    // Injecting the DbContext via constructor
-    public EmployeeController(ApplicationDbContext context)
+    public EmployeeController(ApplicationDbContext context, GenerateEmailSuggestions generateSuggestions)
     {
         _context = context;
+        _generateSuggestions = generateSuggestions;
     }
 
     // GET: Employees/Create
@@ -30,6 +31,17 @@ public class EmployeeController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(EmployeeViewModel model)
     {
+        // === No need for this since the Email field now has the custom attribute that checks for uniqueness : [UniqueEmail]
+        //Manually validating the Email Uniques
+        // if (_context.Employees.Any(u => u.Email == model.Email))
+        // {
+        //     //The second parameter will decide the number of unique suggestions to be generated
+        //     var suggestedEmails = await _generateSuggestions.GenerateUniqueEmailsAsync(model.Email, 2);
+
+        //     //Dynamically Adding Model Validation Error incase JavaScript is Disabled
+        //     ModelState.AddModelError("Email", $"Email is already in use. Try anyone of these: {suggestedEmails}");
+        // }
+
         if (ModelState.IsValid)
         {
             try
@@ -95,9 +107,9 @@ public class EmployeeController : Controller
                 await _context.SaveChangesAsync();
 
                 // Redirect to Success page with EmployeeId
-                return RedirectToAction(nameof(Success), new { id = employee.EmployeeId });
+                return RedirectToAction(nameof(Successful), new { id = employee.EmployeeId });
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
                 // Log the error (uncomment ex variable name and write a log.)
                 ModelState.AddModelError("", "Unable to save changes. " +
@@ -116,7 +128,7 @@ public class EmployeeController : Controller
     }
 
     // GET: Employees/Successful
-    public async Task<IActionResult> Success(int id)
+    public async Task<IActionResult> Successful(int id)
     {
         var employee = await _context.Employees
             .Include(e => e.Address)
