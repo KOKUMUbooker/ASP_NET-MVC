@@ -1,0 +1,81 @@
+﻿@{
+    var isLoggedIn = Context.Request.Cookies.ContainsKey("UserId");
+    string currentAction = ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Cookie Demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="@Url.Action("Dashboard", "Account")">Cookie Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link @(currentAction == "AboutCookies" ? "active" : "")" href="@Url.Action("AboutCookies", "Cookie")">About Cookies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentAction == "SetSampleCookie" ? "active" : "")" href="@Url.Action("SetSampleCookie", "Cookie")">Set Cookie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentAction == "ReadSampleCookie" ? "active" : "")" href="@Url.Action("ReadSampleCookie", "Cookie")">Read Cookie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentAction == "DeleteSampleCookie" ? "active" : "")" href="@Url.Action("DeleteSampleCookie", "Cookie")">Delete Cookie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentAction == "ViewCookiesInView" ? "active" : "")" href="@Url.Action("ViewCookiesInView", "Cookie")">Cookies In View</a>
+                    </li>
+                    @if (isLoggedIn)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link @(currentAction == "Dashboard" ? "active" : "")" href="@Url.Action("Dashboard", "Account")">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="@Url.Action("Logout", "Account")">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link @(currentAction == "Login" ? "active" : "")" href="@Url.Action("Login", "Account")">Login</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5 flex-grow-1">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-12">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light text-center py-3 mt-auto">
+        &copy; @DateTime.Now.Year - Cookie Demo | Powered by ASP.NET Core MVC
+    </footer>
+
+    <!-- Bootstrap & Validation Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
