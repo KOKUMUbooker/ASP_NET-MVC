@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "XvMJTC03p1M=",
+  "success": true,
+  "projectFilePath": "/home/booker/projects/ASP_NET/o.FluentApiDemo/o.FluentApiDemo.csproj",
+  "expectedPackageFiles": [
+    "/home/booker/.nuget/packages/fluentvalidation/11.11.0/fluentvalidation.11.11.0.nupkg.sha512",
+    "/home/booker/.nuget/packages/fluentvalidation.aspnetcore/11.3.1/fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
+    "/home/booker/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.11.0/fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512"
+  ],
+  "logs": []
+}
