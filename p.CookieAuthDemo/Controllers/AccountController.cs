@@ -2,7 +2,7 @@ using p.CookieAuthDemo.Models;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CookieAuthDemo.Controllers
+namespace p.CookieAuthDemo.Controllers
 {
     public class AccountController : Controller
     {
