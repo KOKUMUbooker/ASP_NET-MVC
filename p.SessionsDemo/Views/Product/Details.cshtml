@@ -1,0 +1,60 @@
+@model p.SessionsDemo.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+@if (TempData["CartSuccess"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        @TempData["CartSuccess"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="card mb-4 shadow-sm" style="max-width: 900px; margin: auto;">
+    <div class="row g-0">
+        <div class="col-md-5 d-flex align-items-center bg-light">
+            <img src="@Model.ImageUrl" class="img-fluid p-4" alt="@Model.Name" style="max-height: 350px; object-fit: contain; width: 100%;" />
+        </div>
+        <div class="col-md-7">
+            <div class="card-body">
+                <h2 class="card-title fw-bold">@Model.Name</h2>
+                <h6 class="text-muted">@Model.Category</h6>
+
+                <p class="mt-4">@Model.Description</p>
+
+                <h4 class="text-success my-4">Price: ₹@Model.Price.ToString("N2")</h4>
+
+                <p>
+                    @if (Model.StockQuantity > 0)
+                    {
+                        <span class="badge bg-success fs-6">@Model.StockQuantity in stock</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger fs-6">Out of stock</span>
+                    }
+                </p>
+
+                <p class="text-muted">Added on: @Model.CreatedDate.ToString("dd MMM yyyy")</p>
+
+                <div class="d-flex gap-3 mt-4">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Back to Catalog</a>
+
+                    <form asp-controller="Cart" asp-action="AddToCart" method="post" class="m-0">
+                        <input type="hidden" name="productId" value="@Model.Id" />
+                        @if (Model.StockQuantity > 0)
+                        {
+                            <button type="submit" class="btn btn-primary px-4">Add to Cart</button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-secondary px-4" disabled>Out of Stock</button>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
