@@ -1,0 +1,73 @@
+﻿@using p.SessionsDemo.Helpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - ECommerceSessionCart</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold fs-4" asp-area="" asp-controller="Home" asp-action="Index">
+                    ECommerceSessionCart
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-primary fw-semibold d-flex align-items-center" asp-controller="Product" asp-action="Index" style="gap: 0.25rem;">
+                                <i class="bi bi-grid-fill"></i> Products
+                            </a>
+                        </li>
+
+                        <li class="nav-item ms-3">
+                            @{
+                                var cart = Context.Session.GetObjectFromJson<List<p.SessionsDemo.Models.CartItem>>("CartSession");
+                                int count = cart?.Sum(i => i.Quantity) ?? 0;
+                                string countDisplay = count > 0 ? $"({count})" : "";
+                            }
+                            <a class="nav-link text-success fw-semibold d-flex align-items-center" asp-controller="Cart" asp-action="Index" style="gap: 0.25rem;">
+                                <i class="bi bi-cart-fill fs-5"></i>
+                                <span>Cart</span>
+                                <span class="text-muted" style="font-weight: 600;">@countDisplay</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ms-3">
+                            <a class="nav-link text-info fw-semibold" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        <li class="nav-item ms-3">
+                            <a class="nav-link text-warning fw-semibold" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-4">
+        @RenderBody()
+    </main>
+
+    <footer class="border-top py-3 text-muted text-center">
+        &copy; 2025 - ECommerceSessionCart - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
