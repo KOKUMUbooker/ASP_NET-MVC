@@ -1,0 +1,9 @@
+
+Time: 1/2/2026 2:14:04 PM, Controller: Home, Action: Index, Exception: Attempted to divide by zero.
+Time: 1/2/2026 2:14:04 PM, Controller: Home, Action: Index, Exception: Attempted to divide by zero.
+Time: 1/2/2026 2:16:28 PM, Controller: Home, Action: Index, Exception: Attempted to divide by zero.
+Time: 1/2/2026 2:16:28 PM, Controller: Home, Action: Index, Exception: Attempted to divide by zero.
+Time: 1/2/2026 2:16:28 PM, Controller: Home, Action: Index, Exception: Attempted to divide by zero.
+Time: 1/2/2026 2:37:10 PM, Controller: Home, Action: IExp, Exception: Attempted to divide by zero.
+Time: 1/2/2026 2:37:10 PM, Controller: Home, Action: IExp, Exception: Attempted to divide by zero.
+Time: 1/2/2026 2:37:10 PM, Controller: Home, Action: IExp, Exception: Attempted to divide by zero.
