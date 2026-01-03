@@ -1,0 +1,15 @@
+@model int
+
+@{
+    ViewBag.Title = "Product Not Found";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="alert alert-warning shadow-sm" role="alert">
+        <h4 class="alert-heading">Product Not Found</h4>
+        <p>Sorry, no product exists with ID: <strong>@Model</strong>. Please check the product ID and try again.</p>
+        <hr>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Return Home</a>
+    </div>
+</div>
