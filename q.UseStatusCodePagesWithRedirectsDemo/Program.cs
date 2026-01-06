@@ -1,4 +1,4 @@
-namespace q.HandlingNonSuccessStatusCodes1;
+namespace q.UseStatusCodePagesWithRedirectsDemo;
 
 public class Program
 {
@@ -11,9 +11,9 @@ public class Program
 
         var app = builder.Build();
 
-        // Show generic error msg instead of full error msg for non-success http status codes
-        app.UseStatusCodePages();
-        
+        // Redirect to a custom error page, e.g., /Error/404
+        app.UseStatusCodePagesWithRedirects("/Error/{0}");
+
         app.UseHttpsRedirection();
         app.UseRouting();
 
