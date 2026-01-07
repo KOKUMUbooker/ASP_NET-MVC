@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "x1jF+lPRTg8=",
+  "success": true,
+  "projectFilePath": "/home/booker/projects/ASP_NET/q.ResponseCachingDemo/q.ResponseCachingDemo.csproj",
+  "expectedPackageFiles": [
+    "/home/booker/.nuget/packages/microsoft.aspnetcore.openapi/10.0.1/microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512",
+    "/home/booker/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
