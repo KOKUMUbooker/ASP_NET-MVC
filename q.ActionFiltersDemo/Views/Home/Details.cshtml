@@ -1,0 +1,19 @@
+@model q.ActionFiltersDemo.Models.MyCustomModel
+
+@{
+    ViewData["Title"] = "Details Page";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-3">Details</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Name</h5>
+            <p class="card-text">@Model.Name</p>
+
+            <h5 class="card-title">Address</h5>
+            <p class="card-text">@Model.Address</p>
+        </div>
+    </div>
+</div>
