@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Pin Change Page";
+}
+
+<div>
+    <form asp-controller="Home" asp-action="ChangePin" method="post" class="mt-3">
+        <div style="margin-top:7px" class="form-group row">
+            <label for="AccountNumber" class="col-sm-2 col-form-label">Account Number</label>
+            <div class="col-sm-10">
+                <input type="text" name="AccountNumber" id="AccountNumber" class="form-control" />
+            </div>
+        </div>
+        <div style="margin-top:7px" class="form-group row">
+            <label for="Pin" class="col-sm-2 col-form-label">Pin</label>
+            <div class="col-sm-10">
+                <input type="text" name="Pin" id="Pin" class="form-control" />
+            </div>
+        </div>
+
+        <div style="margin-top:10px" class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">PIN Change</button>
+            </div>
+        </div>
+    </form>
+</div>

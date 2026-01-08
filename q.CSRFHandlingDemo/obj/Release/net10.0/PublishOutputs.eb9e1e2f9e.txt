@@ -1,0 +1,7 @@
+/home/booker/projects/ASP_NET/q.CSRFHandlingDemo/bin/Release/net10.0/publish/q.CSRFHandlingDemo
+/home/booker/projects/ASP_NET/q.CSRFHandlingDemo/bin/Release/net10.0/publish/appsettings.Development.json
+/home/booker/projects/ASP_NET/q.CSRFHandlingDemo/bin/Release/net10.0/publish/appsettings.json
+/home/booker/projects/ASP_NET/q.CSRFHandlingDemo/bin/Release/net10.0/publish/q.CSRFHandlingDemo.dll
+/home/booker/projects/ASP_NET/q.CSRFHandlingDemo/bin/Release/net10.0/publish/q.CSRFHandlingDemo.deps.json
+/home/booker/projects/ASP_NET/q.CSRFHandlingDemo/bin/Release/net10.0/publish/q.CSRFHandlingDemo.runtimeconfig.json
+/home/booker/projects/ASP_NET/q.CSRFHandlingDemo/bin/Release/net10.0/publish/q.CSRFHandlingDemo.pdb
