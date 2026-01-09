@@ -14,18 +14,6 @@ namespace r.EFCoreCodeFirstDemo.Entities
         {
         }
 
-        // OnConfiguring is an override method that allows configuring the DbContext options,
-        // like setting the database provider and connection string.
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // Configure the database provider and connection string.
-            // UseSqlServer method configures the DbContext to use SQL Server as the database provider.
-            // The provided connection string specifies the server, database name, and credentials.
-            // Replace "Server=YourServerName;Database=YourDatabaseName;User Id=YourUsername;Password=YourPassword;"
-            // with your actual SQL Server details.
-            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=MyDatabase;User Id=sa;Password=Pass@123;TrustServerCertificate=True;");
-        }
-
         // DbSet<Student> Students represents a table in the database corresponding to the Student entity.
         // EF Core uses DbSet<TEntity> to track changes and execute queries related to the Student entity.
         public DbSet<Student> Students { get; set; }
