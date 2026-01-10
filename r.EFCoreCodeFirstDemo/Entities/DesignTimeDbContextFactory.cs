@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace r.EFCoreCodeFirstDemo.Entities
 {
@@ -20,6 +21,9 @@ namespace r.EFCoreCodeFirstDemo.Entities
             var optionsBuilder = new DbContextOptionsBuilder<EFCoreDbContext>();
 
             optionsBuilder.UseSqlServer(connectionString);
+
+            // Enable logging
+            optionsBuilder.LogTo(Console.WriteLine,LogLevel.Information);
 
             return new EFCoreDbContext(optionsBuilder.Options);
         }
