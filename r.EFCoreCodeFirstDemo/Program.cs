@@ -35,7 +35,7 @@ namespace r.EFCoreCodeFirstDemo
             Console.WriteLine("All Students:");
             foreach (var student in students)
             {
-                Console.WriteLine($"\t{student.StudentId}: {student.FirstName} {student.LastName}, Branch: {student.Branch?.BranchName}");
+                Console.WriteLine($"\t{student.StudentId}: {student.FirstName} {student.LastName}, Branch: {student.Branch?.BranchName}, Entity state : {context.Entry(student).State}");
             }
         }
     }
